@@ -114,6 +114,9 @@ public class IHMC : MonoBehaviour
     private TextMeshProUGUI errorMessage;
 
     [SerializeField]
+    private TextMeshProUGUI errorMessage1;
+
+    [SerializeField]
     private TextMeshProUGUI userName;
 
     [SerializeField]
@@ -163,6 +166,7 @@ public class IHMC : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         errorMessage.text = "";
+        errorMessage1.text = "";
     }
     public void showletters()//affiche les lettres trouve par le joueur 
     {
@@ -171,7 +175,7 @@ public class IHMC : MonoBehaviour
         Debug.Log(game.motComplet);
     }
     public void infomot()//affiche le nombre de lettres present
-    {   
+    {
         game = GetComponent<Logic>();
 
         if(game.modeJeu == 1)
@@ -192,6 +196,7 @@ public class IHMC : MonoBehaviour
     public void error(string message)//message d'erreur
     {
         errorMessage.text = message;
+        errorMessage1.text = message;
         StartCoroutine(waitError());
     }
     public void DisableCanvas() //active ou desactive le canvas de win ou de loose 

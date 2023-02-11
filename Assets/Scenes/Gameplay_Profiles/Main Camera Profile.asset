@@ -21,7 +21,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.195
+    value: 0.176
   size:
     overrideState: 1
     value: 1
@@ -1391,7 +1391,7 @@ MonoBehaviour:
     value: 1
   softKnee:
     overrideState: 1
-    value: 0.487
+    value: 0.63
   clamp:
     overrideState: 1
     value: 65472
@@ -1497,7 +1497,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 34
+    value: 35
   intensityX:
     overrideState: 1
     value: 1

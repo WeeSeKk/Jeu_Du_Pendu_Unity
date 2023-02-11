@@ -97,14 +97,15 @@ public class Logic : MonoBehaviour
                 boucleJeu();
             }
         }
-        else
+        else if(!string.IsNullOrEmpty(lettreChoisie))
         {
             IHM.error("Ceci n'est pas une lettre");
         }
     }
     public void readInputDef(string mot)//read input mode de jeu 1
     {
-        if(mot.Length > 1)
+        
+        if(mot.Length > 1 && checkLettre(mot))
         {
             choixMot();
             if(mot == motChoisiString)//si input = mot choisi alors win 
@@ -114,7 +115,7 @@ public class Logic : MonoBehaviour
                 winLoose();
                 IHM.DisableCanvas();
             }
-            else if(mauvaisMot.Contains(mot))//si input deja present dans list de mot deja tapé alors erreur
+            else if(badWords.Contains(mot))//si input deja present dans list de mot deja tapé alors erreur
             {
                 IHM.error("mot déjà tapé");
             }
@@ -126,21 +127,24 @@ public class Logic : MonoBehaviour
                 winLoose();
                 IHM.DisableCanvas();
                 IHM.showBomb();
+                badWords = string.Concat(mauvaisMot);
             }
+        }
+        else
+        {
+            IHM.error("Ceci n'est pas un mot");
         }
     }
     public bool checkLettre(string lettreChoisie)//pour mode de jeu 0 check si input est bien une lettre 
     {
-        if(lettreChoisie.Length == 1)
+        foreach(char letter in lettreChoisie)
         {
-            bool result = Char.IsLetter(lettreChoisie,0);
-            return result;
+            if(!Char.IsLetter(letter))
+            {
+                return false;
+            }
         }
-        else
-        {
-            bool result = false;
-            return result;
-        }
+        return true;
     }
     public void checkIfWin()
     {
